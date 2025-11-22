@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@react-three/drei": "^10.7.6",
+    "@react-three/fiber": "^9.4.0",
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1",
+    "react-router-dom": "^7.9.5",
+    "three": "^0.181.1"
+  }
+}

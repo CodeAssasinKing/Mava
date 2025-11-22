@@ -1,0 +1,114 @@
+
+@import url('https://fonts.cdnfonts.com/css/bankgothic-md-bt');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.contact-us {
+    z-index: 1000;           /* выше Canvas */
+    pointer-events: none;  /* чтобы не мешал вращать сцену */
+}
+
+.contact-us-glass {
+    pointer-events: auto;
+
+    background: radial-gradient(circle at top left,
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.05))
+    border-box;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow:
+            0 18px 40px rgba(0, 0, 0, 0.45),
+            0 0 0 1px rgba(255, 255, 255, 0.15);
+
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    font-family: 'BankGothic Md BT', sans-serif;
+}
+
+.contact-us-glass:hover {
+    transform: translateY(-4px);
+    background: radial-gradient(circle at top left,
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.06))
+    border-box;
+    box-shadow:
+            0 26px 60px rgba(0, 0, 0, 0.6),
+            0 0 0 1px rgba(255, 255, 255, 0.22);
+    cursor: pointer;
+}
+
+
+.brand-header {
+    z-index: 1000;         /* чтобы было выше Canvas */
+    pointer-events: none; /* не мешает крутить сцену */
+}
+
+
+.brand-name{
+    font-size: 130px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'BankGothic Md BT', sans-serif;
+}
+
+
+.brand-slogan{
+    font-size: 100px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    font-family: 'BankGothic Md BT', sans-serif;;
+}
+
+.brand-scroll{
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: 10px;
+    font-family: 'BankGothic Md BT', sans-serif;;
+}
+
+
+/* Loader */
+.LoaderContainer {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: #000000;
+    color: #fff;
+    font-family: 'BankGothic Md BT', sans-serif;
+    z-index: 9999;
+}
+
+.loader-percentage {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.loader-div {
+    display: flex;
+    width: 25vw; /* ширина всей полоски */
+}
+
+.loader {
+    flex: 1;                 /* 4 равные части */
+    height: 10px;
+    background: #000;     /* фон сегмента */
+    overflow: hidden;
+}
+
+.loader-bar {
+    height: 100%;
+    border-radius: inherit;
+    background: #ffffff;     /* цвет заполнения */
+    transition: width 0.25s ease-out;
+}

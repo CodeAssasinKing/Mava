@@ -1,0 +1,11 @@
+Model Information:
+* title:	Scania S730 2-Axle 2016
+* source:	https://sketchfab.com/3d-models/scania-s730-2-axle-2016-891ee120d3734b439a9a5e63eaa10a4c
+* author:	Asadawut.Kaewma (https://sketchfab.com/Asadawut.Kaewma)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Scania S730 2-Axle 2016" (https://sketchfab.com/3d-models/scania-s730-2-axle-2016-891ee120d3734b439a9a5e63eaa10a4c) by Asadawut.Kaewma (https://sketchfab.com/Asadawut.Kaewma) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
