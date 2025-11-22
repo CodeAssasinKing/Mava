@@ -12,13 +12,17 @@ function Main() {
     const [start, setStart] = useState(false);
 
     const navigator = useNavigate();
-    const camPos_A = [-40, 20, -10];
-    const camPos_B = [0, 50, -75];
-    const camPos_C = [0, 50, -10];
+    const camPos_A = [0, 50, -15];
+    const camPos_B = [0, 50, -70];
+    const camPos_C = [30, 20, -15];
 
-    const center_object_look = [0,0,0];
-    const red_crystal_look = [0,25,0]
-    const red_crystal_look2 = [0,50,0]
+
+    const center_object_look = [0,50,-50];
+    const red_crystal_look = [-25,50,0];
+    const red_crystal_look2 = [0,50,0];
+
+    const white_crystal_look = [30,20,0];
+
 
 
     let [enableScroll, setEnableScroll] = useState(false);
@@ -28,62 +32,69 @@ function Main() {
 
 
     useEffect(() => {
-        console.log("setting a camera")
-        const timeline = gsap.timeline()
+        const timeline = gsap.timeline();
+
         timeline.to(camPos, {
-            duration: 2,
-            ease: "power1.inOut",
             0: camPos_B[0],
             1: camPos_B[1],
             2: camPos_B[2],
-            onUpdate: () => setCamPos([...camPos]),
-            delay: 2,
-        })
-        timeline.to(camTarget, {
             duration: 2,
             ease: "power1.inOut",
+            onUpdate: () => setCamPos([...camPos]),
+            delay: 2
+        })
+        timeline.to(camTarget, {
             0: red_crystal_look[0],
             1: red_crystal_look[1],
             2: red_crystal_look[2],
-            onUpdate: () => setCamTarget([...camTarget]),
-            onComplete: () => setEnableScroll(true)
-        }, "-=2")
+            duration: 2,
+            ease: "power2.inOut",
+            onUpdate : () => setCamTarget([...camTarget])
+        }, "-=2" )
+        timeline.to(camTarget, {
+            0: red_crystal_look2[0],
+            1: red_crystal_look2[1],
+            2: red_crystal_look2[2],
+            duration: 2,
+            ease: "power2.inOut",
+            onUpdate : () => setCamTarget([...camTarget]),
+            onComplete: setEnableScroll(true)
+        }, "-=1")
 
 
     }, [])
 
 
-    const animateToNext = () => {
-        const tl = gsap.timeline()
-        .to(camPos, {
+
+    const look_right_white_crystal = () => {
+        const timeline = gsap.timeline()
+        timeline.to(camPos, {
             0: camPos_C[0],
             1: camPos_C[1],
             2: camPos_C[2],
             duration: 2,
             ease: "power1.inOut",
-            onUpdate: () => setCamPos([...camPos]),
-
+            onUpdate : () => setCamPos([...camPos]),
         })
-        .to(camTarget, {
-            0: red_crystal_look2[0],
-            1: red_crystal_look2[1],
-            2: red_crystal_look2[2],
+
+        timeline.to(camTarget, {
+            0: white_crystal_look[0],
+            1: white_crystal_look[1],
+            2: white_crystal_look[2],
             duration: 2,
-            ease: "power1.inOut",
-            onUpdate: () => setCamTarget([...camTarget]),
-            onComplete: () => setEnableScroll(false)
+            ease: "power2.inOut",
+            onUpdate : () => setCamTarget([...camTarget]),
+            onComplete: setEnableScroll(false),
         }, "-=2")
-        tl.call(
+        timeline.call(
             () => {
-                navigator("/car/")
+                navigator("/airplane/")
             },
             null,
-            1.65
+            2
 
         )
     }
-
-
 
 
     const CameraController = ({ camPos, camTarget }) => {
@@ -101,7 +112,7 @@ function Main() {
     const scrollCanvas = (e) => {
         if (enableScroll) {
             if (e.deltaY > 0) {
-                animateToNext();
+                look_right_white_crystal()
             }
             else{
                 console.log("Scrolling top")

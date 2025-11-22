@@ -63,7 +63,7 @@ function Car() {
 
             tl.call(
                 () => {
-                    navigate("/after-truck/")
+                    navigate("/")
                 },
                 null,
                 3
