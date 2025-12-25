@@ -1,0 +1,39 @@
+{% load static %}
+<nav class="nav">
+  <div class="container nav__inner">
+    <a class="nav__logo" href="index.html">
+      <img src="{% static 'core/img/logo.png' %} " alt="MAVA logo">
+    </a>
+
+    <!-- burger -->
+<button class="nav__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+  <span class="nav__burger-line"></span>
+  <span class="nav__burger-line"></span>
+  <span class="nav__burger-line"></span>
+</button>
+
+
+    <!-- backdrop -->
+    <div class="nav__backdrop" hidden></div>
+
+    <!-- menu -->
+    <div class="nav__menu" id="navMenu">
+
+			<button class="nav__close" type="button" aria-label="Close menu">
+				<span></span>
+				<span></span>
+			</button>
+
+
+      <ul class="nav__links">
+        <li><a href="{% url 'core:index' %}">Home</a></li>
+        <li><a href="{% url 'core:services' %}">Services</a></li>
+        <li><a href="{% url 'core:special' %}">Special</a></li>
+        <li><a href="procurement.html">Procurement</a></li>
+        <li><a href="customs.html">Customs</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contacts.html" class="nav__cta">Contacts</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

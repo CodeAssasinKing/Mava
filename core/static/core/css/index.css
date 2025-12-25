@@ -1,0 +1,209 @@
+:root {
+  --index: calc(1vw + 1vh);
+  --color-header: #000;
+  --color-text: #000;
+  --gallery-gap: calc(var(--index) * 7.5);
+}
+
+/* 2) Заголовки — BankGothic */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "BankGothic", "Bank Gothic", Arial, sans-serif;
+}
+
+/* will-change */
+.content, .hero, .main-header, .gallery > * {
+  will-change: transform;
+}
+
+body {
+  background-size: 50px;
+  overflow-x: hidden;
+}
+
+.main-header {
+	height: 100vh;
+  	color: #fafafa;
+}
+
+.container {
+	padding: 0 7vw;
+}
+.main-title {
+	font-size: calc(var(--index) * 8);
+	position: absolute;
+	bottom: 0vh;
+	line-height: 1;          /* нормальная высота строки */
+	left: 0; right: 0; 
+
+}
+.main-subtitle {
+	display: block;          /* перенос на новую строку */
+	font-size: 56px;
+	line-height: 1;          /* плотнее к MAVA */
+	margin-top: -0.2em;      /* прижать ещё ближе, если нужно */
+	text-align: center;
+
+}
+
+.gallery {
+	display: flex;
+	padding: calc(var(--index) * 8) 0;
+}
+.gallery > * {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+.gallery__item {
+	max-width: calc(var(--index) * 21);
+	margin-bottom: var(--gallery-gap);
+	max-height: 180vh;
+	border-radius: 8px;
+}
+.gallery__left {
+	margin-top: calc(var(--gallery-gap) * 1.75);
+}
+.gallery__right .gallery__item {
+	margin: 0;
+	margin-top: var(--gallery-gap);
+}
+.text-block {
+	color: var(--color-text);
+	position: relative;
+}
+.text-block__h {
+	font-size: 2.5rem;
+	line-height: 2.4rem;
+	color: var(--color-header);
+	margin-bottom: 1.5rem;
+}
+.text-block__p {
+	line-height: 1.75;
+	font-size: 1.1rem;
+}
+
+:root{ --brand:#AD1C42; }
+
+
+.service-teaser .text-block__h{
+  margin-bottom: .8rem;
+}
+
+.service-teaser .brand{
+  color: var(--brand);
+  font-weight: 800;
+}
+
+.service-teaser .lead{
+  font-weight: 800;
+}
+
+.service-link{
+  display:inline-block;
+  margin-top: 10px;
+  font-weight: 800;
+  text-decoration: none;
+  color: var(--brand);
+}
+
+.service-link:hover{
+  text-decoration: underline;
+}
+#air, #sea, #road, #rail { scroll-margin-top: 110px; }
+
+
+/* =========================
+   TABLET (<= 992px)
+   ========================= */
+@media (max-width: 992px){
+  /* titles */
+  .main-title{
+    font-size: clamp(52px, 10vw, 140px);
+    left: 0;
+    right: 0;
+    padding: 0 5vw;
+  }
+  .main-subtitle{
+    font-size: clamp(20px, 4.2vw, 56px);
+    margin-top: -0.15em;
+  }
+
+  /* gallery */
+  .gallery{ 
+    flex-direction: column;
+    padding: calc(var(--index) * 6) 0;
+    gap: clamp(18px, 4vw, 56px);
+  }
+  .gallery__left{ margin-top: 0; }
+
+  .gallery__item{
+    width: 100% !important;                  /* перебивает inline width:70% */
+    max-width: min(92vw, 620px) !important;
+    height: auto;
+    display: block;
+  }
+  .text-block{
+    width: 100%;
+    max-width: min(92vw, 620px);
+    padding: 0;
+  }
+
+  /* typography */
+  .text-block__h{
+    font-size: clamp(22px, 3.2vw, 40px);
+    line-height: 1.15;
+  }
+  .text-block__p{
+    font-size: clamp(14px, 2vw, 18px);
+  }
+
+
+}
+
+
+/* =========================
+   MOBILE (<= 560px)
+   ========================= */
+@media (max-width: 560px){
+  .main-header{ height: 92vh; }
+  .main-title{
+    bottom: 4vh;
+    text-align: center;
+  }
+
+  .gallery{
+    padding: calc(var(--index) * 7) 0;
+  }
+
+  .text-block__h{ margin-bottom: .6rem; }
+  .service-link{ margin-top: 8px; }
+
+
+}
+/* ===== HERO stable (no random padding on reload) ===== */
+.hero-section{
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* important: anchor absolute title inside header */
+.main-header{
+  position: relative;
+}
+
+/* optional: prevent any default margins causing gap */
+body{ margin: 0; }
+header{ margin: 0; padding: 0; }
+html, body{ width: 100%; overflow-x: hidden; }
+.nav{ left: 0; right: 0; }

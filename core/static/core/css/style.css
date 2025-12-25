@@ -1,0 +1,431 @@
+/* 1) Подключение BankGothic (положи файлы в /fonts/) */
+@font-face {
+  font-family: "BankGothic";
+  src: url("../fonts/BankGothic.woff2") format("woff2"),
+       url("../fonts/BankGothic.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* если у тебя есть жирный вариант */
+@font-face {
+  font-family: "BankGothic";
+  src: url("../fonts/BankGothic-Bold.woff2") format("woff2"),
+       url("../fonts/BankGothic-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+body { font-family: "BankGothic", Arial, sans-serif; }
+
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), transparent);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  gap: 16px;
+}
+
+.nav__logo { display:flex; align-items:center; }
+.nav__logo img {
+  height: 70px;
+  display: block;
+  object-fit: contain;
+}
+
+/* Desktop menu wrapper */
+.nav__menu { display: block; }
+
+.nav__links {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__links a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 3px;
+  white-space: nowrap;
+}
+
+.nav__links a:hover {
+  border-color: #fff;
+  transform: translateY(-1px);
+}
+.nav__burger{
+  display: none; /* показываем только на мобилке */
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.10);
+  border-radius: 14px;
+  cursor: pointer;
+  padding: 10px;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav__burger-line{
+  width: 24px;
+  height: 2px;
+  border-radius: 2px;
+  background: #fff;
+  display: block;
+  transition: transform .25s ease, opacity .2s ease;
+}
+
+/* backdrop */
+.nav__backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: 999;
+}
+
+/* mobile rules */
+@media (max-width: 992px){
+  .nav__inner{
+    padding: 18px; /* 35px на мобилке слишком жирно */
+  }
+
+  .nav__burger{
+    display: flex;
+  }
+
+  /* выезжающее меню */
+  .nav__menu{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(340px, 86vw);
+    background: #fff;
+    padding: 90px 22px 22px;
+    box-shadow: -20px 0 60px rgba(0,0,0,.12);
+    transform: translateX(110%);
+    transition: transform .28s ease;
+    z-index: 1000;
+    display: block;
+    overflow: auto;
+  }
+  .nav__menu.is-open{ transform: translateX(0); }
+
+  /* ссылки вертикально + черные */
+  .nav__links{
+    flex-direction: column;
+    gap: 14px;
+  }
+  .nav__links a{
+    color: #111;
+    border-bottom: 1px solid rgba(0,0,0,.08);
+    padding: 10px 0;
+  }
+  .nav__links a:hover{
+    border-color: rgba(0,0,0,.35);
+  }
+
+.nav__links .nav__cta{
+  border: 0;
+  background: #AD1C42;
+  color: #fff;
+  padding: 12px 14px;
+  border-radius: 12px;
+
+  display: flex !important;
+  width: 240px !important;      /* фикс ширина */
+  margin: 12px auto 0 !important; /* центр */
+  justify-content: center;
+  align-items: center;
+}
+
+
+  /* на мобилке фон навбара лучше сделать менее прозрачным */
+  .nav{
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(10px);
+  }
+
+    /* центрируем содержимое меню */
+  .nav__menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  /* ссылки по центру */
+  .nav__links{
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .nav__links a{
+    width: 100%;
+      display: flex;
+
+    justify-content: center;
+    text-align: center;
+    border-bottom: 0;
+    padding: 12px 0;
+  }
+
+
+
+}
+/* X hidden only on desktop */
+@media (min-width: 993px){
+  .nav__close{ display: none !important; }
+}
+
+@media (max-width: 992px){
+  .nav__close{
+    display: grid !important;
+    place-items: center;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(0,0,0,.10);
+    background: rgba(0,0,0,.04);
+    border-radius: 14px;
+    cursor: pointer;
+    z-index: 5; /* чтобы точно был поверх */
+  }
+  .nav__close span{
+    position: absolute;
+    width: 22px;
+    height: 2px;
+    background: #111;
+    border-radius: 2px;
+  }
+  .nav__close span:nth-child(1){ transform: rotate(45deg); }
+  .nav__close span:nth-child(2){ transform: rotate(-45deg); }
+}
+
+/* burger -> X */
+.nav__burger.is-open .nav__burger-line:nth-child(1){
+  transform: translateY(8px) rotate(45deg);
+}
+.nav__burger.is-open .nav__burger-line:nth-child(2){
+  opacity: 0;
+}
+.nav__burger.is-open .nav__burger-line:nth-child(3){
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+body.nav--locked{ overflow: hidden; }
+
+
+
+:root{
+  --accent: #AD1C42;
+  --footer-bg: rgba(0,0,0,0.85);
+  --footer-text: rgba(255,255,255,.78);
+  --footer-muted: rgba(255,255,255,.55);
+  --footer-border: rgba(255,255,255,.12);
+}
+
+.footer-spacer{
+  height: clamp(360px, 42vh, 560px); /* место под футер */
+}
+
+.mava-footer{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1200;
+  margin-top: 0;
+
+  /* твои стили остаются */
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  border-top: 1px solid var(--footer-border);
+  border-radius: 22px 22px 0 0;
+  overflow: hidden;
+
+  /* старт для анимации */
+  transform: translateY(24px);
+  opacity: 0;
+  pointer-events: none; /* пока скрыт — не кликается */
+}
+
+
+.footer-grid{
+  display: grid;
+  grid-template-columns: 1.35fr 1fr 1fr 1.2fr;
+  gap: 42px;
+  padding: 56px 0 28px;
+}
+
+.footer-title{
+  font-size: 14px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.9);
+  margin-bottom: 16px;
+}
+
+.footer-links{
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.footer-links a{
+  color: var(--footer-muted);
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: .02em;
+  transition: color .2s ease, transform .2s ease;
+}
+.footer-links a:hover{
+  color: #fff;
+  transform: translateX(2px);
+}
+
+.footer-brand .footer-text{
+  margin-top: 14px;
+  line-height: 1.6;
+  color: var(--footer-text);
+  font-size: 14px;
+}
+.footer-brand .footer-mini{
+  margin-top: 12px;
+  color: var(--footer-muted);
+  font-size: 13px;
+}
+
+.footer-logo{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.footer-logo img{
+  height: 42px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+.footer-logo span{
+  font-size: 18px;
+  letter-spacing: .22em;
+}
+
+.footer-contact{
+  display: grid;
+  gap: 14px;
+}
+.footer-row{
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  margin-top: 7px;
+  flex: 0 0 auto;
+}
+.footer-label{
+  font-size: 12px;
+  color: var(--footer-muted);
+  margin-bottom: 3px;
+}
+.footer-value{
+  font-size: 14px;
+  color: rgba(255,255,255,.85);
+  text-decoration: none;
+}
+.footer-value:hover{
+  color: #fff;
+}
+
+.footer-bottom{
+  padding: 18px 0 26px;
+}
+.footer-line{
+  height: 1px;
+  background: var(--footer-border);
+  margin-bottom: 16px;
+}
+.footer-bottom-inner{
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  color: var(--footer-muted);
+  font-size: 13px;
+}
+.footer-slogan{
+  color: rgba(255,255,255,.65);
+}
+
+/* ===== MOBILE/TABLET: footer becomes normal block (no overlay) ===== */
+@media (max-width: 980px){
+  .footer-spacer{
+    display: none !important; /* он нужен только для fixed footer на ПК */
+  }
+
+  .mava-footer{
+    position: relative !important;
+    left: auto; right: auto; bottom: auto;
+    z-index: auto;
+
+    border-radius: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+
+    overflow: visible !important; /* никаких внутренних скроллов */
+  }
+
+  .footer-grid{
+    grid-template-columns: 1fr !important;
+    gap: 18px;
+    padding: 28px 0 14px;
+  }
+
+  .footer-bottom-inner{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 560px){
+  .footer-logo img{ height: 34px; }
+  .footer-logo span{ font-size: 16px; }
+  .footer-title{ margin-bottom: 10px; }
+  .footer-links a{ font-size: 13px; }
+}
+
+

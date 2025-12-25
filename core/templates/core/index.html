@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Main Page</title>
+
+	<script src="{% static 'core/libs/gsap/gsap.min.js' %}" defer></script>
+	<script src="{% static 'core/libs/gsap/ScrollTrigger.min.js' %}" defer></script>
+	<script src="{% static 'core/libs/gsap/ScrollSmoother.min.js' %}" defer></script>
+
+	<link rel="stylesheet" href="{% static 'core/css/index.css' %}">
+	<link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+
+	<script src="{% static 'core/js/index.js' %}" defer></script>
+	<script src="{% static 'core/js/style.js' %}" defer></script>
+
+</head>
+<body>
+
+	{% include 'core/components/navbar.html' %}
+
+
+
+	<div class="wrapper">
+		<div class="content">
+
+			<header class="hero-section" id="hero">
+				<img data-speed=".6" class="hero" src="{% static 'core/img/global-logistics-transportation-network.jpg' %} " alt="Alt" >
+				<div class="container">
+					<div data-speed=".75" class="main-header">
+						<h1 class="main-title">
+							M A V A
+							<span class="main-subtitle">The Perfect Time</span>
+						</h1>
+					</div>
+				</div>
+			</header>
+		
+			<div class="portfolio">
+				<div class="container">
+					<main class="gallery">
+	
+						<div data-speed=".9" class="gallery__left">
+		
+							<img class="gallery__item" src="{% static 'core/img/work/air-index1.jpg' %}" alt="Alt" style="width:70%;">
+
+							<div class="text-block gallery__item service-teaser" id="sea">
+								<h2 class="text-block__h">
+									Sea Freight <span class="brand">by MAVA</span>
+								</h2>
+								<p class="text-block__p lead">Clear. Predictable. Even when it storms.</p>
+								<p class="text-block__p">
+									It’s not about ships — it’s about control between shipment and delivery.
+								</p>
+								<a class="service-link" href="services.html#sea">Read more →</a>
+							</div>
+
+							<img class="gallery__item" src="{% static 'core/img/work/ship-index2.png' %}" alt="Alt">
+							
+							<div class="text-block gallery__item service-teaser" id="road">
+								<h2 class="text-block__h">
+									Road Freight <span class="brand">with MAVA</span>
+								</h2>
+								<p class="text-block__p lead">Long road — but everything runs right.</p>
+								<p class="text-block__p">
+									Borders, customs, weather, delays — we think faster, act earlier, keep you informed.
+								</p>
+								<a class="service-link" href="services.html#road">Read more →</a>
+							</div>
+							
+		
+							<img class="gallery__item" src="{% static 'core/img/work/train-index1.png' %}" alt="Alt" style="width: 70%;">
+									
+
+
+						</div>
+						
+
+						<div data-speed="1.1" class="gallery__right">
+		
+
+							<div class="text-block gallery__item service-teaser" id="air">
+								<h2 class="text-block__h">
+									Air Freight <span class="brand">by MAVA</span>
+								</h2>
+								<p class="text-block__p lead">Meaningful speed — measured in trust.</p>
+								<p class="text-block__p">
+									When decisions can’t wait, we make the sky the most reliable part of your supply chain.
+								</p>
+								<a class="service-link" href="services.html#air">Read more →</a>
+							</div>
+		
+							<img class="gallery__item" src="{% static 'core/img/work/air-index2.png' %}" alt="Alt" style="width:70%;">
+							<img class="gallery__item" src="{% static 'core/img/work/ship-index1.png' %}" alt="Alt">
+
+							
+							<img class="gallery__item" src="{% static 'core/img/work/track-index1.jpg' %}" alt="Alt" style="width: 70%;">
+							
+							<div class="text-block gallery__item service-teaser" id="rail">
+								<h2 class="text-block__h">
+									Rail Freight <span class="brand">with MAVA</span>
+								</h2>
+								<p class="text-block__p lead">Power of route. Precision of schedule.</p>
+								<p class="text-block__p">
+									On rails, on plan — every detail fine-tuned. We choose deliberately, not hastily.
+								</p>
+								<a class="service-link" href="services.html#rail">Read more →</a>
+							</div>
+		
+						</div>
+
+					</main>
+				</div>
+			</div>
+			
+
+		<div class="footer-spacer"></div>
+
+		</div>
+	</div>
+
+
+				{% include 'core/components/footer.html' %}
+
+</body>
+</html>

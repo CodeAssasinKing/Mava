@@ -1,0 +1,122 @@
+:root {
+	--index: calc(1vw + 1vh);
+	--gutter: 30px;
+	--side-small: 26;
+	--side-big: 36;
+	--transition: .75s cubic-bezier(.075, .5, 0, 1);
+  --depth: 4000px;
+
+}
+
+body {
+  scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar { 
+  display: none; /* Safari and Chrome */
+}
+body {
+  background-color: white;
+  color: #000;
+  font-family: raleway_c, sans-serif;
+  height: var(--depth);
+  font-weight: 300;
+}
+.scene-wrap {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	perspective: 1500px;
+  line-height: 1.75;
+  font-size: calc(var(--index) * .8);
+}
+
+.scene-gallery {
+	transform-style: preserve-3d;
+	height: 100%;
+}
+
+.scene-frame {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: var(--transition), opacity .75s ease;
+	will-change: transform;
+	transform-style: preserve-3d;
+  
+	
+}
+.scene-wrap h1,
+.scene-wrap h2,
+.scene-wrap h3,
+.scene-wrap h4 {
+	font-weight: 100;
+	text-transform: uppercase;
+	line-height: 1;
+	
+}
+.scene-media {
+	position: relative;
+	width: calc(var(--index) * var(--side-small));
+	height: calc(var(--index) * var(--side-big));
+	background-position: center;
+	background-size: cover;
+	
+}
+
+.scene-media--left {
+	right: calc(var(--side-small) / 2 * var(--index) + var(--gutter));
+}
+.scene-media--right {
+	left: calc(var(--side-small) / 2 * var(--index) + var(--gutter));
+}
+
+.scene-frame--bg {
+	background: rgba(255,255,255,0.9);
+
+}
+
+video.scene-media {
+	width: calc(var(--index) * var(--side-big));
+	height: calc(var(--index) * var(--side-small));
+}
+
+video.scene-media--right {
+	left: calc(var(--side-big) / 2 * var(--index) + var(--gutter));
+}
+video.scene-media--left {
+	right: calc(var(--side-big) / 2 * var(--index) + var(--gutter));
+}
+
+.text--right > * {
+	position: relative;
+	left: 18vw;
+	text-align: center;
+
+
+}
+.text--left > * {
+	position: relative;
+	right: 18vw;
+	text-align: center;
+
+}
+
+.scene-frame h3 {
+	font-size: calc(var(--index) * 1);
+	color: #AD1C42;;
+}
+.scene-frame p {
+	max-width: 30vw;
+	margin-top: 3vh;
+	font-size: calc(var(--index) * 0.7);
+
+}
+.scene-frame p strong {
+  font-weight: 700;
+}
+
+
+
