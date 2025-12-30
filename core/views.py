@@ -29,3 +29,8 @@ def contacts(request):
 
 def procurement(request):
     return render(request, "core/procurement.html")
+
+
+
+def custom_404(request, exception):
+    return render(request, "core/404.html", status=404)
