@@ -1,7 +1,7 @@
 // 3D Scroll
 
 let zSpacing = -1000,
-	lastPos = zSpacing / 5,
+	lastPos = zSpacing / 4.5,
 	$frames = document.getElementsByClassName('scene-frame'),
 	frames = Array.from($frames),
 	zVals = []
@@ -14,7 +14,7 @@ window.onscroll = function () {
 
 	frames.forEach(function (n, i) {
 		zVals.push(i * zSpacing + zSpacing)
-		zVals[i] += delta * -5.5
+		zVals[i] += delta * -4.6
 		let frame = frames[i],
 			transform = `translateZ(${zVals[i]}px)`,
 			opacity = zVals[i] < Math.abs(zSpacing) / 1.8 ? 1 : 0

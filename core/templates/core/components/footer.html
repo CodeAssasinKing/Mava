@@ -5,7 +5,7 @@
 
 					<div class="footer-col footer-brand">
 						<div class="footer-logo">
-							<img src="img/logo.png" alt="MAVA">
+							<img src="{% static 'core/img/logo.png' %}" alt="MAVA">
 							<span>MAVA</span>
 						</div>
 
@@ -22,24 +22,24 @@
 					<div class="footer-col">
 						<h4 class="footer-title">Navigation</h4>
 						<ul class="footer-links">
-							<li><a href="#services">Services</a></li>
-							<li><a href="special.html">Special</a></li>
-							<li><a href="procurement.html">Procurement</a></li>
-							<li><a href="customs.html">Customs</a></li>
-							<li><a href="#about">About</a></li>
-							<li><a href="#contacts">Contacts</a></li>
+							<li><a href="{% url 'core:services' %}">Services</a></li>
+							<li><a href="{% url 'core:special' %}">Special</a></li>
+							<li><a href="{% url 'core:procurement' %}">Procurement</a></li>
+							<li><a href="{% url 'core:customs' %}">Customs</a></li>
+							
+							<li><a href="{% url 'core:contacts' %}">Contacts</a></li>
 						</ul>
 					</div>
 
 					<div class="footer-col">
 						<h4 class="footer-title">Services</h4>
 						<ul class="footer-links">
-							<li><a href="#services">Air Freight</a></li>
-							<li><a href="#services">Sea Freight</a></li>
-							<li><a href="#services">Road Freight</a></li>
-							<li><a href="#services">Rail Freight</a></li>
-							<li><a href="#services">Multimodal</a></li>
-							<li><a href="#services">OOG & Heavy</a></li>
+							<li><a href="{% url 'core:services' %}">Air Freight</a></li>
+							<li><a href="{% url 'core:services' %}">Sea Freight</a></li>
+							<li><a href="{% url 'core:services' %}">Road Freight</a></li>
+							<li><a href="{% url 'core:services' %}">Rail Freight</a></li>
+							<li><a href="{% url 'core:services' %}">Multimodal</a></li>
+							<li><a href="{% url 'core:services' %}">OOG & Heavy</a></li>
 						</ul>
 					</div>
 

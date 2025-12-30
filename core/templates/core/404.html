@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>404 | MAVA</title>
+
+<style>
+:root{
+  --accent:#AD1C42;
+  --text:#000;
+  --bg:#fff;
+}
+
+/* ===== base ===== */
+body{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  margin:0;
+  background:var(--bg);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===== svg ===== */
+svg{
+  width:500px;
+  height:400px;
+  fill:var(--accent);
+}
+
+/* ===== svg parts ===== */
+.st0{font-family:'FootlightMTLight', serif;}
+.st1{font-size:83px;}
+.st2{fill:var(--accent);}
+
+path#XMLID_5_{
+  fill:var(--accent);
+  filter:url(#blurFilter4);
+}
+
+path#XMLID_11_,
+path#XMLID_2_{
+  fill:var(--accent);
+}
+
+.circle{
+  fill:var(--accent);
+  animation:out 2s infinite ease-out;
+}
+
+/* ===== container ===== */
+#container{
+  text-align:center;
+}
+
+/* ===== message ===== */
+.message{
+  margin-top:10px;
+  color:var(--text);
+  font-size:18px;
+  font-weight:500;
+  letter-spacing:1px;
+}
+
+.message::before,
+.message::after{
+  color:var(--accent);
+  font-size:20px;
+  margin:0 40px;
+  animation:opacity 2s infinite;
+}
+
+.message::before{content:"[";}
+.message::after{content:"]";}
+
+/* ===== animations ===== */
+@keyframes opacity{
+  0%,100%{opacity:0}
+  50%{opacity:1}
+}
+
+@keyframes out{
+  0%{r:1;opacity:.9}
+  25%{r:5;opacity:.3}
+  50%{r:10;opacity:.2}
+  75%{r:15;opacity:.1}
+  100%{r:20;opacity:0}
+}
+
+/* ===== mobile ===== */
+@media(max-width:600px){
+  svg{
+    width:320px;
+    height:auto;
+  }
+  .message{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="container">
+
+<svg viewBox="0 0 200 82.7" xmlns="http://www.w3.org/2000/svg">
+
+  <g>
+    <text transform="matrix(1.2187 0 0 1 13 75.6)" class="st0 st1">4</text>
+    <text transform="matrix(1.2187 0 0 1 133 73.6)" class="st0 st1">4</text>
+  </g>
+
+  <g>
+    <path id="XMLID_11_" d="M81.8,29.2c4.1-5.7,10.7-9.4,18.3-9.4c6.3,0,12.1,2.7,16.1,6.9c0.6-0.4,1.1-0.7,1.7-1.1
+      c-4.4-4.8-10.8-7.9-17.8-7.9c-8.3,0-15.6,4.2-20,10.6C80.7,28.5,81.3,28.8,81.8,29.2z"/>
+      
+    <path id="XMLID_2_" d="M118.1,53.7c-4,5.7-10.7,9.5-18.2,9.5c-6.3,0-12.1-2.6-16.2-6.8c-0.6,0.4-1.1,0.7-1.7,1.1
+      c4.4,4.8,10.8,7.8,17.9,7.8c8.3,0,15.6-4.3,19.9-10.7C119.2,54.5,118.6,54.1,118.1,53.7z"/>
+
+    <animateTransform
+      attributeName="transform"
+      type="rotate"
+      from="360 100 41.3"
+      to="0 100 41.3"
+      dur="10s"
+      repeatCount="indefinite"/>
+  </g>
+
+  <circle class="circle" cx="100" cy="41" r="1"/>
+
+  <defs>
+    <filter id="blurFilter4" x="-20" y="-20" width="200" height="200">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+
+  <path id="XMLID_5_" class="st2"
+    d="M103.8,16.7c11.6,1.9,20.4,11.9,20.4,24.1
+    c0,13.5-10.9,24.4-24.4,24.4S75.6,55.1,75.6,41.7
+    c0-3.4,0.7-6.6,1.9-9.6
+    c-1.2,3-1.9,6.2-1.9,9.6
+    c0,14,11.3,25.3,25.3,25.3
+    s25.3-11.3,25.3-25.3
+    C125.3,29,115.9,18.5,103.8,16.7z"/>
+</svg>
+
+<a href="index.html" style="text-decoration:none;">
+  <div class="message">Page not found</div>
+</a>
+
+</div>
+
+</body>
+</html>

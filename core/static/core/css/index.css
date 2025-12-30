@@ -1,3 +1,36 @@
+/* ===== BANK GOTHIC ===== */
+@font-face {
+  font-family: "BankGothic";
+  src: url("../font/Bank Gothic Light Regular.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BankGothic";
+  src: url("../font/bank gothic medium bt.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BankGothic";
+  src: url("../font/BankGothic Md BT.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BankGothic";
+  src: url("../font/BankGothic Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --index: calc(1vw + 1vh);
   --color-header: #000;

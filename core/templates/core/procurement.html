@@ -1,623 +1,26 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Procurement | MAVA</title>
-<link rel="stylesheet" href="css/style.css">
+	<title>Procurement</title>
+	<link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+	<script src="{% static 'core/js/style.js' %}" defer></script>
+	<link rel="stylesheet" href="{% static 'core/css/procurement.css' %}">
+
 
 	<style>
-		:root{
-			--accent:#AD1C42;
-			--bg:#fff;
-			--text:#0b0b10;
-			--muted: rgba(11,11,16,.68);
-			--line: rgba(11,11,16,.10);
-			--soft: rgba(173,28,66,.06);
-			--shadow: 0 18px 55px rgba(0,0,0,.08);
-			--shadow2: 0 12px 30px rgba(0,0,0,.06);
-			--radius: 22px;
-		}
-
-		/* ===== Page base ===== */
-		body{
-			background: var(--bg);
-			color: var(--text);
-		}
-
-		/* Чтобы fixed navbar не перекрывал hero */
-		.proc-page{
-			padding-top: 120px;
-		}
-		@media (max-width: 980px){
-			.proc-page{ padding-top: 105px; }
-		}
-
-		.proc-wrap{
-			width: min(1160px, calc(100% - 40px));
-			margin: 0 auto;
-		}
-
-		/* ===== HERO (делаем "дорого" через композицию) ===== */
-		.proc-hero{
-			position: relative;
-			padding: 34px 0 34px;
-		}
-
-		.proc-heroCard{
-			border-radius: calc(var(--radius) + 6px);
-			border: 1px solid var(--line);
-			background: #fff;
-			box-shadow: var(--shadow);
-			overflow: hidden;
-		}
-
-		.proc-heroGrid{
-			display: grid;
-			grid-template-columns: 1.15fr .85fr;
-			gap: 18px;
-			align-items: stretch;
-		}
-
-		.proc-left{
-			padding: 28px;
-			position: relative;
-			background:
-				radial-gradient(60% 70% at 10% 10%, rgba(173,28,66,.10), transparent 60%),
-				radial-gradient(50% 70% at 95% 30%, rgba(0,0,0,.05), transparent 60%),
-				linear-gradient(180deg, rgba(0,0,0,.02), transparent 70%);
-		}
-
-		.proc-badge{
-			display: inline-flex;
-			align-items: center;
-			gap: 10px;
-			padding: 10px 14px;
-			border-radius: 999px;
-			background: rgba(173,28,66,.08);
-			border: 1px solid rgba(173,28,66,.18);
-			font-family: raleway-c, sans-serif;
-			letter-spacing: .10em;
-			text-transform: uppercase;
-			font-size: 12px;
-			color: rgba(11,11,16,.78);
-			margin-bottom: 14px;
-		}
-		.proc-dot{
-			width: 10px; height: 10px; border-radius: 999px;
-			background: var(--accent);
-			box-shadow: 0 0 0 6px rgba(173,28,66,.12);
-		}
-
-		.proc-h1{
-			font-family: outfit-c, sans-serif;
-			font-weight: 900;
-			letter-spacing: .01em;
-			line-height: 1.05;
-			margin: 0 0 12px;
-			font-size: clamp(34px, 4.2vw, 62px);
-		}
-
-		.proc-lead{
-			margin: 0 0 14px;
-			max-width: 60ch;
-			font-family: raleway-c, sans-serif;
-			font-size: clamp(15px, 1.15vw, 19px);
-			line-height: 1.7;
-			color: var(--muted);
-		}
-		.proc-lead b{ color: var(--text); }
-
-		.proc-chips{
-			display:flex;
-			flex-wrap: wrap;
-			gap: 10px;
-			margin: 16px 0 18px;
-		}
-		.proc-chip{
-			display:inline-flex;
-			align-items:center;
-			gap: 10px;
-			padding: 10px 12px;
-			border-radius: 999px;
-			background: #fff;
-			border: 1px solid var(--line);
-			box-shadow: var(--shadow2);
-			font-family: raleway-c, sans-serif;
-			font-size: 13px;
-			color: rgba(11,11,16,.78);
-		}
-		.proc-chip i{
-			width: 9px; height: 9px; border-radius: 999px;
-			background: var(--accent);
-			box-shadow: 0 0 0 6px rgba(173,28,66,.10);
-		}
-
-		.proc-actions{
-			display:flex;
-			gap: 12px;
-			flex-wrap: wrap;
-			margin-top: 10px;
-		}
-		.proc-btn{
-			display:inline-flex;
-			align-items:center;
-			justify-content:center;
-			gap: 10px;
-			padding: 14px 18px;
-			border-radius: 14px;
-			text-decoration:none;
-			font-family: outfit-c, sans-serif;
-			letter-spacing:.05em;
-			text-transform: uppercase;
-			font-size: 12px;
-			transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
-			user-select:none;
-		}
-		.proc-btn:hover{ transform: translateY(-1px); }
-		.proc-btn--primary{
-			background: var(--accent);
-			color:#fff;
-			box-shadow: 0 18px 40px rgba(173,28,66,.22);
-		}
-		.proc-btn--ghost{
-			background: #fff;
-			color: rgba(0,0,0,.82);
-			border: 1px solid var(--line);
-			box-shadow: var(--shadow2);
-		}
-
-		.proc-right{
-			display: grid;
-			grid-template-rows: 1fr auto;
-			min-height: 100%;
-		}
 		.proc-photo{
-			position: relative;
-			background:
-				linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.95)),
-				url("img/procurement-bg.jpg");
-			background-size: cover;
-			background-position: center;
-			filter: grayscale(1) contrast(1.05);
-			min-height: 260px;
+			background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.95)),url("{% static 'core/img/procurement/7.jpg' %}");
 		}
-		.proc-photo::after{
-			content:"";
-			position:absolute;
-			inset:0;
-			background: radial-gradient(55% 70% at 70% 25%, rgba(173,28,66,.22), transparent 60%);
-			opacity: .6;
-			pointer-events:none;
-		}
-		.proc-rightBody{
-			padding: 18px;
-			border-top: 1px solid var(--line);
-			background: #fff;
-		}
-		.proc-rightTitle{
-			margin: 0 0 8px;
-			font-family: outfit-c, sans-serif;
-			font-weight: 900;
-			font-size: 18px;
-			letter-spacing:.01em;
-		}
-		.proc-mini{
-			margin: 0 0 12px;
-			font-family: raleway-c, sans-serif;
-			color: var(--muted);
-			line-height: 1.6;
-			font-size: 14px;
-		}
-		.proc-miniList{
-			margin: 0;
-			padding: 0;
-			list-style:none;
-			display:grid;
-			gap: 10px;
-		}
-		.proc-miniList li{
-			display:flex;
-			gap: 10px;
-			align-items:flex-start;
-			font-family: raleway-c, sans-serif;
-			color: rgba(11,11,16,.78);
-			font-size: 14px;
-			line-height: 1.5;
-		}
-		.proc-check{
-			width: 18px; height: 18px;
-			border-radius: 6px;
-			background: rgba(173,28,66,.10);
-			border: 1px solid rgba(173,28,66,.25);
-			display:grid; place-items:center;
-			flex: 0 0 auto;
-			margin-top: 1px;
-		}
-		.proc-check::before{
-			content:"";
-			width: 8px; height: 8px;
-			border-radius: 2px;
-			background: var(--accent);
-		}
-
-		/* ===== Sections ===== */
-		.proc-section{
-			padding: 78px 0;
-		}
-		.proc-soft{
-			background: linear-gradient(180deg, var(--soft), transparent 70%);
-			border-top: 1px solid var(--line);
-			border-bottom: 1px solid var(--line);
-		}
-		.proc-head{
-			margin-bottom: 22px;
-		}
-		.proc-h2{
-			margin: 0 0 10px;
-			font-family: outfit-c, sans-serif;
-			font-weight: 900;
-			letter-spacing:.01em;
-			line-height: 1.15;
-			font-size: clamp(24px, 3vw, 40px);
-		}
-		.proc-subtitle{
-			margin: 0;
-			font-family: raleway-c, sans-serif;
-			color: var(--muted);
-			line-height: 1.7;
-			max-width: 72ch;
-		}
-
-		.proc-cards{
-			display:grid;
-			grid-template-columns: repeat(3, 1fr);
-			gap: 16px;
-			margin-top: 16px;
-		}
-		.proc-card{
-			background: #fff;
-			border: 1px solid var(--line);
-			border-radius: var(--radius);
-			padding: 18px;
-			box-shadow: var(--shadow2);
-			transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-			position: relative;
-			overflow:hidden;
-		}
-		.proc-card::after{
-			content:"";
-			position:absolute;
-			inset:-1px;
-			background: radial-gradient(70% 70% at 15% 0%, rgba(173,28,66,.12), transparent 60%);
-			opacity: 0;
-			transition: opacity .2s ease;
-			pointer-events:none;
-		}
-		.proc-card:hover{
-			transform: translateY(-3px);
-			box-shadow: var(--shadow);
-			border-color: rgba(173,28,66,.25);
-		}
-		.proc-card:hover::after{ opacity: 1; }
-
-		.proc-kicker{
-			font-family: outfit-c, sans-serif;
-			font-size: 12px;
-			letter-spacing: .14em;
-			text-transform: uppercase;
-			color: rgba(11,11,16,.55);
-			margin: 0 0 10px;
-		}
-		.proc-title{
-			font-family: outfit-c, sans-serif;
-			font-weight: 900;
-			letter-spacing:.01em;
-			margin: 0 0 8px;
-			font-size: 18px;
-		}
-		.proc-text{
-			margin: 0;
-			font-family: raleway-c, sans-serif;
-			color: var(--muted);
-			line-height: 1.7;
-			font-size: 14px;
-		}
-
-		/* Steps */
-		.proc-steps{
-			display:grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 14px;
-			margin-top: 18px;
-		}
-		.proc-step{
-			background: #fff;
-			border: 1px solid var(--line);
-			border-radius: var(--radius);
-			padding: 18px;
-			display:flex;
-			gap: 14px;
-			align-items:flex-start;
-			box-shadow: var(--shadow2);
-		}
-		.proc-num{
-			width: 40px; height: 40px;
-			border-radius: 14px;
-			background: rgba(173,28,66,.10);
-			border: 1px solid rgba(173,28,66,.25);
-			display:grid; place-items:center;
-			font-family: outfit-c, sans-serif;
-			font-weight: 900;
-			color: var(--accent);
-			flex: 0 0 auto;
-		}
-		.proc-step h4{
-			margin: 0 0 6px;
-			font-family: outfit-c, sans-serif;
-			font-weight: 900;
-			letter-spacing:.01em;
-			font-size: 16px;
-		}
-		.proc-step p{
-			margin: 0;
-			font-family: raleway-c, sans-serif;
-			color: var(--muted);
-			line-height: 1.65;
-			font-size: 14px;
-		}
-
-		/* Control block */
-		.proc-two{
-			display:grid;
-			grid-template-columns: 1.05fr .95fr;
-			gap: 16px;
-			margin-top: 18px;
-			align-items: start;
-		}
-		.proc-panel{
-			background: #fff;
-			border: 1px solid var(--line);
-			border-radius: var(--radius);
-			padding: 18px;
-			box-shadow: var(--shadow2);
-		}
-		.proc-panel h3{
-			margin: 0 0 10px;
-			font-family: outfit-c, sans-serif;
-			font-weight: 900;
-			letter-spacing:.01em;
-			font-size: 18px;
-		}
-		.proc-bullets{
-			list-style:none;
-			margin: 0;
-			padding: 0;
-			display:grid;
-			gap: 10px;
-		}
-		.proc-bullets li{
-			display:flex;
-			gap: 10px;
-			align-items:flex-start;
-			font-family: raleway-c, sans-serif;
-			color: var(--muted);
-			font-size: 14px;
-			line-height: 1.65;
-		}
-		.proc-bullets li i{
-			width: 10px; height: 10px;
-			border-radius: 999px;
-			background: var(--accent);
-			margin-top: 7px;
-			flex: 0 0 auto;
-			box-shadow: 0 0 0 6px rgba(173,28,66,.10);
-		}
-		.proc-quote{
-			border-radius: var(--radius);
-			padding: 18px;
-			background: linear-gradient(135deg, rgba(173,28,66,.14), rgba(173,28,66,.05));
-			border: 1px solid rgba(173,28,66,.22);
-			box-shadow: var(--shadow2);
-		}
-		.proc-quote p{
-			margin: 0;
-			font-family: raleway-c, sans-serif;
-			color: rgba(11,11,16,.82);
-			line-height: 1.75;
-			font-size: 14px;
-		}
-		.proc-quote b{
-			font-family: outfit-c, sans-serif;
-			font-weight: 900;
-			color: var(--text);
-		}
-
-		/* FAQ */
-		.proc-faq{
-			margin-top: 18px;
-			display:grid;
-			gap: 10px;
-		}
-		.proc-qa{
-			background:#fff;
-			border: 1px solid var(--line);
-			border-radius: 18px;
-			overflow:hidden;
-			box-shadow: var(--shadow2);
-		}
-		.proc-q{
-			width:100%;
-			padding: 16px;
-			background: transparent;
-			border: 0;
-			cursor:pointer;
-			display:flex;
-			align-items:center;
-			justify-content: space-between;
-			gap: 14px;
-			text-align:left;
-		}
-		.proc-q span{
-			font-family: outfit-c, sans-serif;
-			font-weight: 900;
-			letter-spacing:.01em;
-			font-size: 15px;
-			color: var(--text);
-		}
-		.proc-q em{
-			width: 34px; height: 34px;
-			border-radius: 14px;
-			background: rgba(173,28,66,.08);
-			border: 1px solid rgba(173,28,66,.18);
-			display:grid; place-items:center;
-			color: var(--accent);
-			font-style: normal;
-			font-family: outfit-c, sans-serif;
-			font-weight: 900;
-			transition: transform .18s ease;
-			flex: 0 0 auto;
-		}
-		.proc-a{
-			max-height: 0;
-			overflow:hidden;
-			transition: max-height .22s ease;
-			border-top: 1px solid var(--line);
-		}
-		.proc-a > div{
-			padding: 14px 16px 16px;
-			font-family: raleway-c, sans-serif;
-			color: var(--muted);
-			line-height: 1.75;
-			font-size: 14px;
-		}
-		.proc-qa.is-open .proc-a{ max-height: 260px; }
-		.proc-qa.is-open .proc-q em{ transform: rotate(45deg); }
-
-		/* CTA */
-		.proc-cta{
-			padding: 70px 0 86px;
-			background: linear-gradient(180deg, transparent, var(--soft) 55%, transparent);
-			border-top: 1px solid var(--line);
-		}
-		.proc-ctaBox{
-			border-radius: calc(var(--radius) + 4px);
-			background: #fff;
-			border: 1px solid rgba(173,28,66,.22);
-			box-shadow: var(--shadow);
-			padding: 26px;
-			display:flex;
-			align-items:center;
-			justify-content: space-between;
-			gap: 16px;
-			flex-wrap: wrap;
-			position: relative;
-			overflow:hidden;
-		}
-		.proc-ctaBox::after{
-			content:"";
-			position:absolute;
-			inset:-1px;
-			background: radial-gradient(65% 70% at 15% 30%, rgba(173,28,66,.14), transparent 60%);
-			pointer-events:none;
-		}
-		.proc-ctaBox h3{
-			margin:0;
-			font-family: outfit-c, sans-serif;
-			font-weight: 900;
-			font-size: 20px;
-			letter-spacing:.01em;
-			position: relative;
-			z-index: 1;
-		}
-		.proc-ctaBox p{
-			margin: 6px 0 0;
-			font-family: raleway-c, sans-serif;
-			color: var(--muted);
-			line-height: 1.6;
-			font-size: 14px;
-			max-width: 70ch;
-			position: relative;
-			z-index: 1;
-		}
-		.proc-ctaBox .proc-actions{ margin: 0; position: relative; z-index: 1; }
-
-		/* Reveal */
-		.proc-reveal{
-			opacity: 0;
-			transform: translateY(14px);
-			transition: opacity .45s ease, transform .45s ease;
-		}
-		.proc-reveal.is-visible{
-			opacity: 1;
-			transform: translateY(0);
-		}
-
-		/* Responsive */
-		@media (max-width: 980px){
-			.proc-heroGrid{ grid-template-columns: 1fr; }
-			.proc-cards{ grid-template-columns: 1fr 1fr; }
-			.proc-steps{ grid-template-columns: 1fr; }
-			.proc-two{ grid-template-columns: 1fr; }
-		}
-		@media (max-width: 620px){
-			.proc-cards{ grid-template-columns: 1fr; }
-			.proc-left{ padding: 20px; }
-		}
-
-		/* ===== Footer reveal (твой футер fixed) ===== */
-		.mava-footer.is-visible{
-			transform: translateY(0);
-			opacity: 1;
-			pointer-events: auto;
-			transition: transform .35s ease, opacity .35s ease;
-		}
-
 	</style>
 </head>
 
-<body>
+<body class="footer-static">
 
-	<!-- ===== NAVBAR (ТВОЙ КОД 1:1) ===== -->
-	<nav class="nav">
-  <div class="container nav__inner">
-    <a class="nav__logo" href="index.html">
-      <img src="img/logo.png" alt="MAVA logo">
-    </a>
-
-    <!-- burger -->
-<button class="nav__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
-  <span class="nav__burger-line"></span>
-  <span class="nav__burger-line"></span>
-  <span class="nav__burger-line"></span>
-</button>
-
-
-    <!-- backdrop -->
-    <div class="nav__backdrop" hidden></div>
-
-    <!-- menu -->
-    <div class="nav__menu" id="navMenu">
-
-			<button class="nav__close" type="button" aria-label="Close menu">
-				<span></span>
-				<span></span>
-			</button>
-
-
-      <ul class="nav__links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="special.html">Special</a></li>
-        <li><a href="procurement.html">Procurement</a></li>
-        <li><a href="customs.html">Customs</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contacts.html" class="nav__cta">Contacts</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+	{% include "core/components/navbar.html" %}
 
 
 	<main class="proc-page">
@@ -659,7 +62,7 @@
 						</div>
 
 						<aside class="proc-right proc-reveal">
-							<div class="proc-photo"></div>
+							<div class="proc-photo" ></div>
 							<div class="proc-rightBody">
 								<h3 class="proc-rightTitle">Why it works</h3>
 								<p class="proc-mini">MAVA steps in where most logistics companies step back.</p>
@@ -730,92 +133,78 @@
 		</section>
 
 		<!-- PROCESS -->
-		<section class="proc-section proc-soft" id="process">
-			<div class="proc-wrap">
-				<div class="proc-head proc-reveal">
-					<h2 class="proc-h2">How it works</h2>
-					<p class="proc-subtitle">Clear steps. Clear accountability. Predictable results.</p>
-				</div>
+		<section class="proc-section proc-carousel" id="process">
+  <div class="proc-wrap">
 
-				<div class="proc-steps">
-					<div class="proc-step proc-reveal">
-						<div class="proc-num">1</div>
-						<div>
-							<h4>Request & requirements</h4>
-							<p>Specs, quantities, target dates, compliance and budget boundaries.</p>
-						</div>
-					</div>
+    <div class="proc-head proc-reveal">
+      <h2 class="proc-h2">How it works</h2>
+      <p class="proc-subtitle">Clear steps. Clear accountability. Predictable results.</p>
+    </div>
 
-					<div class="proc-step proc-reveal">
-						<div class="proc-num">2</div>
-						<div>
-							<h4>Shortlist & verification</h4>
-							<p>We propose vetted suppliers and validate reliability.</p>
-						</div>
-					</div>
+    <div class="carousel">
 
-					<div class="proc-step proc-reveal">
-						<div class="proc-num">3</div>
-						<div>
-							<h4>Samples / QC plan</h4>
-							<p>Acceptance criteria + checkpoints before mass production.</p>
-						</div>
-					</div>
+      <div class="carousel-item">
+        <div class="carousel-box">
+          <div class="title">Request & requirements</div>
+          <div class="num">01</div>
+          <img src="{% static 'core/img/procurement/1.jpg' %}">
+        </div>
+      </div>
 
-					<div class="proc-step proc-reveal">
-						<div class="proc-num">4</div>
-						<div>
-							<h4>Negotiation & contract</h4>
-							<p>Lead time, penalties, packaging, payments, warranty, documents.</p>
-						</div>
-					</div>
+      <div class="carousel-item">
+        <div class="carousel-box">
+          <div class="title">Supplier verification</div>
+          <div class="num">02</div>
+          <img src="{% static 'core/img/procurement/2.jpg' %}">
+        </div>
+      </div>
 
-					<div class="proc-step proc-reveal">
-						<div class="proc-num">5</div>
-						<div>
-							<h4>Production monitoring</h4>
-							<p>Progress tracking so surprises don’t become your losses.</p>
-						</div>
-					</div>
+      <div class="carousel-item">
+        <div class="carousel-box">
+          <div class="title">Samples & QC plan</div>
+          <div class="num">03</div>
+          <img src="{% static 'core/img/procurement/3.jpg' %}">
+        </div>
+      </div>
 
-					<div class="proc-step proc-reveal">
-						<div class="proc-num">6</div>
-						<div>
-							<h4>Delivery to warehouse</h4>
-							<p>From pickup to unloading — coordinated and controlled.</p>
-						</div>
-					</div>
-				</div>
+      <div class="carousel-item">
+        <div class="carousel-box">
+          <div class="title">Negotiation & contract</div>
+          <div class="num">04</div>
+          <img src="{% static 'core/img/procurement/4.jpg' %}">
+        </div>
+      </div>
 
-				<div class="proc-two">
-					<div class="proc-panel proc-reveal">
-						<h3>Control you can feel</h3>
-						<ul class="proc-bullets">
-							<li><i></i><span>Access to vetted manufacturers in key markets</span></li>
-							<li><i></i><span>Ground support — not just online sourcing</span></li>
-							<li><i></i><span>QC checkpoints + reporting before shipment</span></li>
-							<li><i></i><span>Terms that protect deadlines</span></li>
-							<li><i></i><span>One responsible side — MAVA end to end</span></li>
-						</ul>
-					</div>
+      <div class="carousel-item">
+        <div class="carousel-box">
+          <div class="title">Production monitoring</div>
+          <div class="num">05</div>
+          <img src="{% static 'core/img/procurement/5.jpg' %}">
+        </div>
+      </div>
 
-					<div class="proc-quote proc-reveal">
-						<p>
-							<b>Reality:</b> a missed deadline means losses. The wrong vendor is a risk to your entire chain.<br><br>
-							We don’t just procure. We build a system where you stay in control — without the headache.
-						</p>
-					</div>
-				</div>
+      <div class="carousel-item">
+        <div class="carousel-box">
+          <div class="title">Delivery & unloading</div>
+          <div class="num">06</div>
+          <img src="{% static 'core/img/procurement/6.jpg' %}">
+        </div>
+      </div>
 
-			</div>
-		</section>
+    </div>
+
+    <div class="cursor"></div>
+    <div class="cursor cursor2"></div>
+
+  </div>
+</section>
+
 
 		<!-- FAQ -->
 		<section class="proc-section" id="faq">
 			<div class="proc-wrap">
 				<div class="proc-head proc-reveal">
 					<h2 class="proc-h2">FAQ</h2>
-					<p class="proc-subtitle">Коротко и по делу.</p>
 				</div>
 
 				<div class="proc-faq">
@@ -861,7 +250,7 @@
 						<p>We’ll build a controlled sourcing pipeline — from first request to final unloading at your warehouse.</p>
 					</div>
 					<div class="proc-actions">
-						<a class="proc-btn proc-btn--primary" href="contacts.html">Contact MAVA</a>
+						<a class="proc-btn proc-btn--primary" href="{% url 'core:contacts' %}">Contact MAVA</a>
 						<a class="proc-btn proc-btn--ghost" href="#top">Back to top</a>
 					</div>
 				</div>
@@ -870,177 +259,100 @@
 
 	</main>
 
-	<!-- ===== FOOTER (ТВОЙ КОД 1:1) ===== -->
-	<footer class="mava-footer" id="contacts">
-		<div class="container">
-			<div class="footer-grid">
+<footer class="mava-footer" id="contacts">
+  <div class="container">
 
-				<div class="footer-col footer-brand">
-					<div class="footer-logo">
-						<img src="img/logo.png" alt="MAVA">
-						<span>MAVA</span>
-					</div>
+    <div class="footer-grid">
 
-					<p class="footer-text">
-						We move cargo. We manage time.<br>
-						Full responsibility — end to end.
-					</p>
+      <div class="footer-col footer-brand">
+        <div class="footer-logo">
+          <img src="img/logo.png" alt="MAVA">
+          <span>MAVA</span>
+        </div>
 
-					<p class="footer-mini">
-						Air • Sea • Road • Rail • Multimodal
-					</p>
-				</div>
+        <p class="footer-text">
+          We move cargo. We manage time.<br>
+          Full responsibility — end to end.
+        </p>
 
-				<div class="footer-col">
-					<h4 class="footer-title">Navigation</h4>
-					<ul class="footer-links">
-						<li><a href="#services">Services</a></li>
-						<li><a href="special.html">Special</a></li>
-						<li><a href="procurement.html">Procurement</a></li>
-						<li><a href="customs.html">Customs</a></li>
-						<li><a href="#about">About</a></li>
-						<li><a href="#contacts">Contacts</a></li>
-					</ul>
-				</div>
+        <p class="footer-mini">
+          Air • Sea • Road • Rail • Multimodal
+        </p>
+      </div>
 
-				<div class="footer-col">
-					<h4 class="footer-title">Services</h4>
-					<ul class="footer-links">
-						<li><a href="#services">Air Freight</a></li>
-						<li><a href="#services">Sea Freight</a></li>
-						<li><a href="#services">Road Freight</a></li>
-						<li><a href="#services">Rail Freight</a></li>
-						<li><a href="#services">Multimodal</a></li>
-						<li><a href="#services">OOG & Heavy</a></li>
-					</ul>
-				</div>
+      <div class="footer-col">
+        <h4 class="footer-title">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="services.html">Services</a></li>
+          <li><a href="special.html">Special</a></li>
+          <li><a href="procurement.html">Procurement</a></li>
+          <li><a href="customs.html">Customs</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contacts.html">Contacts</a></li>
+        </ul>
+      </div>
 
-				<div class="footer-col">
-					<h4 class="footer-title">Contacts</h4>
+      <div class="footer-col">
+        <h4 class="footer-title">Services</h4>
+        <ul class="footer-links">
+          <li><a href="#">Air Freight</a></li>
+          <li><a href="#">Sea Freight</a></li>
+          <li><a href="#">Road Freight</a></li>
+          <li><a href="#">Rail Freight</a></li>
+          <li><a href="#">Multimodal</a></li>
+          <li><a href="#">OOG & Heavy</a></li>
+        </ul>
+      </div>
 
-					<div class="footer-contact">
-						<div class="footer-row">
-							<span class="dot"></span>
-							<div>
-								<div class="footer-label">Email</div>
-								<a class="footer-value" href="mailto:info@mava-logistics.com">info@mava-logistics.com</a>
-							</div>
-						</div>
+      <div class="footer-col">
+        <h4 class="footer-title">Contacts</h4>
 
-						<div class="footer-row">
-							<span class="dot"></span>
-							<div>
-								<div class="footer-label">Phone</div>
-								<a class="footer-value" href="tel:+0000000000">+XX XXX XXX XXX</a>
-							</div>
-						</div>
+        <div class="footer-contact">
+          <div class="footer-row">
+            <span class="dot"></span>
+            <div>
+              <div class="footer-label">Email</div>
+              <a class="footer-value" href="mailto:info@mava-logistics.com">
+                info@mava-logistics.com
+              </a>
+            </div>
+          </div>
 
-						<div class="footer-row">
-							<span class="dot"></span>
-							<div>
-								<div class="footer-label">Support</div>
-								<div class="footer-value">24/7 — across time zones</div>
-							</div>
-						</div>
-					</div>
-				</div>
+          <div class="footer-row">
+            <span class="dot"></span>
+            <div>
+              <div class="footer-label">Phone</div>
+              <a class="footer-value" href="tel:+0000000000">
+                +XX XXX XXX XXX
+              </a>
+            </div>
+          </div>
 
-			</div>
+          <div class="footer-row">
+            <span class="dot"></span>
+            <div>
+              <div class="footer-label">Support</div>
+              <div class="footer-value">24/7 — across time zones</div>
+            </div>
+          </div>
+        </div>
 
-			<div class="footer-bottom">
-				<div class="footer-line"></div>
-				<div class="footer-bottom-inner">
-					<span>© 2025 MAVA Logistics. All rights reserved.</span>
-					<span class="footer-slogan">From first decision to final delivery.</span>
-				</div>
-			</div>
-		</div>
-	</footer>
+      </div>
+    </div>
+  </div>
 
-	<script>
-		// Reveal blocks
-		const els = document.querySelectorAll(".proc-reveal");
-		const io = new IntersectionObserver((entries) => {
-			entries.forEach(e => {
-				if(e.isIntersecting){
-					e.target.classList.add("is-visible");
-					io.unobserve(e.target);
-				}
-			});
-		}, { threshold: 0.12 });
-		els.forEach(el => io.observe(el));
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-line"></div>
+      <div class="footer-bottom-inner">
+        <span>© 2025 MAVA Logistics. All rights reserved.</span>
+        <span class="footer-slogan">From first decision to final delivery.</span>
+      </div>
+    </div>
+  </div>
+</footer>
 
-		// FAQ accordion
-		document.querySelectorAll(".proc-qa .proc-q").forEach(btn => {
-			btn.addEventListener("click", () => {
-				const item = btn.closest(".proc-qa");
-				const open = item.classList.contains("is-open");
-				document.querySelectorAll(".proc-qa.is-open").forEach(x => x.classList.remove("is-open"));
-				if(!open) item.classList.add("is-open");
-			});
-		});
-
-		// Footer show near bottom (т.к. у тебя footer fixed и по CSS скрыт)
-		const footer = document.querySelector(".mava-footer");
-		function footerToggle(){
-			const scrollBottom = window.scrollY + window.innerHeight;
-			const docH = document.documentElement.scrollHeight;
-			const nearBottom = (docH - scrollBottom) < 220; // расстояние до низа
-			if(nearBottom) footer.classList.add("is-visible");
-			else footer.classList.remove("is-visible");
-		}
-		window.addEventListener("scroll", footerToggle, { passive:true });
-		window.addEventListener("resize", footerToggle);
-		footerToggle();
-
-		document.addEventListener("DOMContentLoaded", () => {
-  const burger = document.querySelector(".nav__burger");
-  const menu = document.querySelector(".nav__menu");
-  const backdrop = document.querySelector(".nav__backdrop");
-
-  if (!burger || !menu || !backdrop) return;
-
-  const openMenu = () => {
-    burger.classList.add("is-open");
-    menu.classList.add("is-open");
-    backdrop.hidden = false;
-    burger.setAttribute("aria-expanded", "true");
-    document.body.classList.add("nav--locked");
-  };
-
-  const closeMenu = () => {
-    burger.classList.remove("is-open");
-    menu.classList.remove("is-open");
-    backdrop.hidden = true;
-    burger.setAttribute("aria-expanded", "false");
-    document.body.classList.remove("nav--locked");
-  };
-
-  burger.addEventListener("click", () => {
-    const isOpen = menu.classList.contains("is-open");
-    isOpen ? closeMenu() : openMenu();
-  });
-
-  backdrop.addEventListener("click", closeMenu);
-
-  // close on ESC
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeMenu();
-  });
-
-  // close when clicking a link
-  menu.addEventListener("click", (e) => {
-    const a = e.target.closest("a");
-    if (a) closeMenu();
-  });
-
-  // auto-close if resized to desktop
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 992) closeMenu();
-  });
-});
-
-	</script>
+	<script src="{% static 'core/js/procurement.js' %}"></script>
 
 </body>
 </html>

@@ -1,3 +1,36 @@
+/* ===== BANK GOTHIC ===== */
+@font-face {
+  font-family: "BankGothic";
+  src: url("../font/Bank Gothic Light Regular.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BankGothic";
+  src: url("../font/bank gothic medium bt.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BankGothic";
+  src: url("../font/BankGothic Md BT.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BankGothic";
+  src: url("../font/BankGothic Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @property --scroll-progress {
 	inherits: true;
 	initial-value: 0;
@@ -510,3 +543,44 @@ links;
 }
 
 
+/* =========================================================
+   BANK GOTHIC OVERRIDE (GLOBAL)
+   put this at the END of the file
+========================================================= */
+
+/* 1) Переопределяем базовый sans-шрифт */
+:root {
+  --font-sans: "BankGothic", system-ui, -apple-system, sans-serif;
+}
+
+/* 2) Базовый текст */
+body {
+  font-family: var(--font-sans);
+  font-weight: 500;
+}
+
+/* 3) Все заголовки */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+}
+
+/* 4) Текстовые элементы внутри layout / intro */
+.intro,
+.intro p,
+.scroll-indicator,
+.comparison-percentage {
+  font-family: var(--font-sans);
+  font-weight: 500;
+}
+
+/* 5) Навигация стадий */
+.stage-indicator {
+  font-family: var(--font-sans);
+}
+
+/* 6) Любой текст поверх изображений */
+.image-layer,
+.image-layer img {
+  font-family: var(--font-sans);
+}

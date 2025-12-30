@@ -9,7 +9,8 @@
 
   <link rel="stylesheet" href="{% static 'core/css/services.css' %}">
   <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
-
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script src="{% static 'core/js/style.js' %}" defer></script>
 
 </head>
@@ -294,9 +295,125 @@
 </main>
 
 
-{% include 'core/components/footer.html' %}
+<footer style="
+  background:#fff;
+  padding:140px 20px 80px;
+  border-top:1px solid rgba(11,11,16,.1);
+">
+
+  <div style="
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:80px;
+  ">
+
+    <!-- LEFT -->
+    <div data-aos="fade-up">
+      <h2 style="
+        font-size:clamp(36px,5vw,64px);
+        letter-spacing:-1px;
+        line-height:1.1;
+        margin-bottom:32px;
+      ">
+        Logistics is not about moving cargo.<br>
+        <span style="color:#AD1C42;">It’s about moving decisions.</span>
+      </h2>
+
+      <p style="
+        font-size:17px;
+        color:rgba(11,11,16,.6);
+        max-width:520px;
+        line-height:1.6;
+      ">
+        At MAVA, every shipment is handled with intent.<br>
+        We don’t optimize routes — we optimize outcomes.
+      </p>
+    </div>
+
+    <!-- RIGHT -->
+    <div data-aos="fade-up" data-aos-delay="150">
+      <div style="
+        border-left:2px solid #AD1C42;
+        padding-left:32px;
+      ">
+
+        <p style="margin-bottom:14px; font-size:14px; color:rgba(11,11,16,.5);">
+          CONTACT
+        </p>
+
+        <p style="font-size:18px; margin-bottom:10px;">
+          Turkmenistan, Ashgabat
+        </p>
+
+        <p style="font-size:18px; margin-bottom:10px;">
+          info@mava.net
+        </p>
+
+        <p style="font-size:18px; margin-bottom:30px;">
+          Mon–Sat · 09:00–18:00
+        </p>
+
+        <a href="{% url 'core:contacts' %}" 
+           class="footer-cta"
+           style="
+            display:inline-block;
+            padding:16px 36px;
+            border-radius:40px;
+            background:#AD1C42;
+            color:#fff;
+            text-decoration:none;
+            font-size:15px;
+            transition:all .4s ease;
+           ">
+          Start a conversation →
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- bottom line -->
+  <div style="
+    max-width:1200px;
+    margin:80px auto 0;
+    padding-top:30px;
+    border-top:1px solid rgba(11,11,16,.08);
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    color:rgba(11,11,16,.45);
+  ">
+    <span>© MAVA Logistics</span>
+    <span>Air • Sea • Rail • Road</span>
+  </div>
+
+</footer>
+
   <script src="{% static 'core/js/services.js' %}" ></script>
 
+<script>
+  AOS.init({
+    duration: 900,
+    easing: 'ease-out-cubic',
+    once: true
+  });
+</script>
+
+<script>
+gsap.fromTo(".footer-cta",
+  { boxShadow: "0 0 0 rgba(173,28,66,0)" },
+  {
+    boxShadow: "0 20px 50px rgba(173,28,66,.35)",
+    duration: 2.5,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut"
+  }
+);
+</script>
 
 
 </body>

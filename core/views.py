@@ -24,3 +24,8 @@ def customs(request):
 
 def contacts(request):
     return render(request, "core/contacts.html")
+
+
+
+def procurement(request):
+    return render(request, "core/procurement.html")
