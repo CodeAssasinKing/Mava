@@ -1,0 +1,367 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+     <link rel="stylesheet" href="{% static 'core/css/customs.css' %}">
+     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <title>Customs</title>
+</head>
+<body>
+    {% include 'core/components/navbar.html' %}
+
+<section class="customs-section">
+  <h2 class="section-title">Customs Services</h2>
+
+  <div class="customs-cards">
+
+    <!-- Import -->
+    <div class="customs-card active"
+      style="--img:url('https://images.unsplash.com/photo-1565793298595-6a879b1d9492?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+      <div class="card-content">
+        <h3>Import Clearance</h3>
+        <p>Ports, containers, HS codes, VAT and duties.</p>
+        <span class="accent-line"></span>
+      </div>
+    </div>
+
+    <!-- Export -->
+    <div class="customs-card"
+      style="--img:url('https://images.unsplash.com/photo-1621862681400-a2a7321dc1c2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+      <div class="card-content">
+        <h3>Export Clearance</h3>
+        <p>Fast export operations without delays.</p>
+        <span class="accent-line"></span>
+      </div>
+    </div>
+
+    <!-- Transit -->
+    <div class="customs-card"
+      style="--img:url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1400&q=80')">
+      <div class="card-content">
+        <h3>Transit Control</h3>
+        <p>Road, rail and cross-border transit control.</p>
+        <span class="accent-line"></span>
+      </div>
+    </div>
+
+    <!-- Special Cargo -->
+    <div class="customs-card"
+      style="--img:url('https://images.unsplash.com/photo-1578335371893-da19ce4ba0cc?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+      <div class="card-content">
+        <h3>Special Cargo</h3>
+        <p>Oversized, heavy and dangerous cargo.</p>
+        <span class="accent-line"></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="customs-timeline">
+  <h2 class="timeline-title">Customs Clearance Process</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-line"></div>
+
+    <!-- 01 -->
+    <div class="timeline-item left" data-aos="fade-right">
+      <div class="media"
+        style="--img:url('https://images.unsplash.com/photo-1659353740197-4e43ab409ce1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+      </div>
+      <div class="content">
+        <span class="step">01</span>
+        <h3>Request</h3>
+        <p>Client sends cargo details and destination.</p>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="timeline-item right" data-aos="fade-left">
+      <div class="media"
+        style="--img:url('https://images.unsplash.com/photo-1622127922075-fb1d21fbacbf?q=80&w=1333&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+      </div>
+      <div class="content">
+        <span class="step">02</span>
+        <h3>Documents Review</h3>
+        <p>HS codes, invoices, certificates validation.</p>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="timeline-item left" data-aos="fade-right">
+      <div class="media"
+        style="--img:url('https://images.unsplash.com/photo-1758519288969-4806f015852d?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+      </div>
+      <div class="content">
+        <span class="step">03</span>
+        <h3>Declaration</h3>
+        <p>Customs declaration submission & control.</p>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="timeline-item right" data-aos="fade-left">
+      <div class="media"
+        style="--img:url('https://images.unsplash.com/photo-1657727534676-cac1bb160d64?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fG1hbiUyMGluc3BlY3RpbmclMjBkb2N1bWVudHN8ZW58MHx8MHx8fDA%3D')">
+      </div>
+      <div class="content">
+        <span class="step">04</span>
+        <h3>Inspection</h3>
+        <p>Physical inspection if required.</p>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="timeline-item left" data-aos="zoom-in">
+      <div class="media"
+        style="--img:url('https://media.istockphoto.com/id/480750456/photo/cheerful-delivery-man.jpg?s=612x612&w=0&k=20&c=uDeGKUQIZm_-gizlvsflfGA4DUURzDMSnuE60jqc8A0=')">
+      </div>
+      <div class="content">
+        <span class="step">05</span>
+        <h3>Release</h3>
+        <p>Cargo released and delivered.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<center><h1>Customer statistics</h1></center>
+<section class="customs-facts">
+  <div class="facts-container">
+
+    <div class="fact-item">
+      <div class="fact-number" data-value="12">0</div>
+      <div class="fact-label">Years Experience</div>
+    </div>
+
+    <div class="fact-item">
+      <div class="fact-number" data-value="8000">0</div>
+      <div class="fact-label">Cleared Shipments</div>
+    </div>
+
+    <div class="fact-item">
+      <div class="fact-number" data-value="48" data-prefix="24–">0</div>
+      <div class="fact-label">Average Clearance (hours)</div>
+    </div>
+
+    <div class="fact-item">
+      <div class="fact-number" data-value="99.4" data-suffix="%">0</div>
+      <div class="fact-label">Success Rate</div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="customs-cta">
+  <div class="cta-glass">
+    <h2>Need Customs Clearance?</h2>
+    <p>
+      Get a professional consultation and calculate customs clearance
+      time and cost for your cargo.
+    </p>
+
+    <div class="cta-actions">
+      <a href="#contact" class="cta-btn primary">Get Consultation</a>
+      <a href="#services" class="cta-btn secondary">View Services</a>
+    </div>
+  </div>
+</section>
+
+
+
+<script src="{% static "core/js/gsap.min.js" %}"></script>
+<script src="{% static 'core/js/scroll-trigger.js' %}"></script>
+<script>
+const cards = document.querySelectorAll('.customs-card');
+let activeIndex = 0;
+let autoRotateTimer = null;
+let userInteracted = false;
+const ROTATE_INTERVAL = 3000;
+const RESUME_DELAY = 6000;
+
+/* ======================
+   helpers
+====================== */
+function activateCard(index) {
+  activeIndex = index;
+
+  cards.forEach((card, i) => {
+    card.classList.toggle('active', i === index);
+
+    gsap.to(card, {
+      flex: i === index ? 2.6 : 0.9,
+      duration: 0.9,
+      ease: 'expo.out'
+    });
+
+    gsap.to(card, {
+      filter: i === index ? 'blur(0px)' : 'blur(3px)',
+      duration: 0.6,
+      ease: 'power2.out'
+    });
+
+    gsap.to(card.querySelector('.card-content'), {
+      opacity: i === index ? 1 : 0,
+      y: i === index ? 0 : 40,
+      duration: 0.5,
+      ease: 'power3.out'
+    });
+  });
+}
+
+function startAutoRotate() {
+  stopAutoRotate();
+  autoRotateTimer = setInterval(() => {
+    if (userInteracted) return;
+    activeIndex = (activeIndex + 1) % cards.length;
+    activateCard(activeIndex);
+  }, ROTATE_INTERVAL);
+}
+
+function stopAutoRotate() {
+  if (autoRotateTimer) {
+    clearInterval(autoRotateTimer);
+    autoRotateTimer = null;
+  }
+}
+
+function pauseAndResumeAutoRotate() {
+  userInteracted = true;
+  stopAutoRotate();
+
+  setTimeout(() => {
+    userInteracted = false;
+    startAutoRotate();
+  }, RESUME_DELAY);
+}
+
+/* ======================
+   DESKTOP (hover)
+====================== */
+cards.forEach((card, index) => {
+  card.addEventListener('mouseenter', () => {
+    if ('ontouchstart' in window) return; // touch = ignore hover
+    activateCard(index);
+    pauseAndResumeAutoRotate();
+  });
+});
+
+/* ======================
+   MOBILE (tap → lock)
+====================== */
+cards.forEach((card, index) => {
+  let tapped = false;
+
+  card.addEventListener('click', (e) => {
+    if (!('ontouchstart' in window)) return;
+
+    if (!card.classList.contains('active')) {
+      e.preventDefault();
+      activateCard(index);
+      pauseAndResumeAutoRotate();
+      tapped = true;
+    } else {
+      // второй тап — можно перейти по ссылке (если будет)
+      tapped = false;
+    }
+  });
+});
+
+/* ======================
+   INIT
+====================== */
+gsap.set(cards, {
+  flex: i => i === 0 ? 2.6 : 0.9
+});
+
+activateCard(0);
+startAutoRotate();
+</script>
+
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.to('.timeline-line', {
+  height: '100%',
+  scrollTrigger: {
+    trigger: '.timeline',
+    start: 'top 70%',
+    end: 'bottom 60%',
+    scrub: true
+  }
+});
+</script>
+<script>
+AOS.init({
+  duration: 900,
+  once: true,
+  easing: 'ease-out-cubic'
+});
+</script>
+<script>
+document.querySelectorAll('.timeline-item').forEach((item, index) => {
+  const media = item.querySelector('.media');
+  const content = item.querySelector('.content');
+
+  if (index % 2 === 0) {
+    item.appendChild(media);
+    item.appendChild(content);
+  } else {
+    item.appendChild(content);
+    item.appendChild(media);
+  }
+});
+</script>
+
+
+<script>
+gsap.utils.toArray('.fact-number').forEach(el => {
+  const endValue = parseFloat(el.dataset.value);
+  const prefix = el.dataset.prefix || '';
+  const suffix = el.dataset.suffix || '';
+
+  gsap.fromTo(el,
+    { innerText: 0 },
+    {
+      innerText: endValue,
+      duration: 1.6,
+      ease: 'power3.out',
+      snap: { innerText: 0.1 },
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 85%'
+      },
+      onUpdate: function () {
+        el.innerText = prefix + el.innerText + suffix;
+      }
+    }
+  );
+});
+</script>
+
+<script>
+gsap.to('.cta-glass', {
+  opacity: 1,
+  y: 0,
+  duration: 0.9,
+  ease: 'expo.out',
+  scrollTrigger: {
+    trigger: '.customs-cta',
+    start: 'top 75%'
+  }
+});
+</script>
+
+
+</body>
+</html>

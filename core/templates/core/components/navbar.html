@@ -30,9 +30,8 @@
         <li><a href="{% url 'core:services' %}">Services</a></li>
         <li><a href="{% url 'core:special' %}">Special</a></li>
         <li><a href="procurement.html">Procurement</a></li>
-        <li><a href="customs.html">Customs</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contacts.html" class="nav__cta">Contacts</a></li>
+        <li><a href="{% url "core:customs" %}">Customs</a></li>
+        <li><a href="{% url 'core:contacts' %}" class="nav__cta">Contacts</a></li>
       </ul>
     </div>
   </div>
